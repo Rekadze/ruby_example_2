@@ -23,14 +23,10 @@ require File.join(File.dirname(__FILE__), 'features', 'pages', 'base_page.rb')
 require File.join(File.dirname(__FILE__), 'features', 'pages', 'base_section.rb')
 Dir[File.join(File.dirname(__FILE__), 'features', 'pages', '**', '*.rb')].each { |file| require file }
 
-# SitePrism.configure do |config|
-#   config.use_implicit_waits = true
-# end
-
 Capybara.configure do |config|
   config.run_server = false
   config.default_selector = :css
-  config.default_max_wait_time = 10
+  config.default_max_wait_time = 20
   config.ignore_hidden_elements = true
   config.match = :prefer_exact
   config.visible_text_only = true
@@ -124,7 +120,7 @@ RSpec.configure do |config|
 
   config.after(:each, type: :feature) do |example|
     if example.exception
-      path = "./#{example.description.gsub(/'/, "_").gsub(' ', '_')}_#{::Random.rand(2**32).to_s}.png"
+      path = "#{example.description.gsub(/'/, "_").gsub(' ', '_')}_#{::Random.rand(2**32).to_s}.png"
       full_path = File.join(File.dirname(__FILE__), "tmp", "capybara", "#{path}").to_s
       FileUtils.mkdir_p(File.dirname(full_path))
       page.save_screenshot(full_path)

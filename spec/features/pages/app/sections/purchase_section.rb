@@ -63,4 +63,12 @@ class PurchaseSection < BaseSection
     element :ticket_preview, '.TicketPreview__Frame-gGgjhN'
     element :download_button, '.Button__ButtonLink-fUNqco'
   end
+
+  section :waiting_list_confirmation_section, '.PurchasePath__WaitingListPage-hLxYid' do
+    element :confirmation_icon, '.GenericConfirmation__Heading-kUibcz svg'
+    element :confirmation_text, '.GenericConfirmation__Title-fTQZft'
+    element :confirmation_description, '.GenericConfirmation__Description-kKhJdw'
+
+    element :download_button, '.Button__ButtonLink-fUNqco'
+  end
 end
