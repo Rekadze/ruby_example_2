@@ -130,18 +130,12 @@ RSpec.configure do |config|
     end
 
     # To clear browser's local storage
-    page.execute_script("window.localStorage.clear()")
-    Capybara.reset_sessions!
+    Capybara.windows.each do |window|
+      Capybara.switch_to_window window
 
-    browser = Capybara.current_session.driver.browser
-    if browser.respond_to?(:manage) and browser.manage.respond_to?(:delete_all_cookies)
-      # Selenium::WebDriver
-      browser.manage.delete_all_cookies
-    elsif browser.respond_to?(:clear_cookies)
-      # Rack::MockSession
-      browser.clear_cookies
-    else
-      raise "Don't know how to clear cookies. Weird driver?"
+      page.execute_script("window.localStorage.clear()")
     end
+
+    Capybara.reset_sessions!
   end
 end
