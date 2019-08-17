@@ -22,6 +22,7 @@ require 'faker'
 require File.join(File.dirname(__FILE__), 'features', 'pages', 'base_page.rb')
 require File.join(File.dirname(__FILE__), 'features', 'pages', 'base_section.rb')
 Dir[File.join(File.dirname(__FILE__), 'features', 'pages', '**', '*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each { |file| require file }
 
 Capybara.configure do |config|
   config.run_server = false
