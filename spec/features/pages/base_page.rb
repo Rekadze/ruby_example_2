@@ -4,4 +4,11 @@ class BasePage < SitePrism::Page
       section.send(field).text == field_value
     end
   end
+
+  def login_as(user)
+    email_field.set user[:email]
+    password_field.set user[:password]
+
+    login_button.click
+  end
 end

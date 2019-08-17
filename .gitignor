@@ -3,6 +3,7 @@
 *.gem
 *.rbc
 /tmp/
+/tmp/**
 report.html
 
 # Used by dotenv library to load environment variables.

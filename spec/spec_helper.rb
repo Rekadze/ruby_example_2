@@ -26,7 +26,7 @@ Dir[File.join(File.dirname(__FILE__), 'features', 'pages', '**', '*.rb')].each {
 Capybara.configure do |config|
   config.run_server = false
   config.default_selector = :css
-  config.default_max_wait_time = 20
+  config.default_max_wait_time = 30
   config.ignore_hidden_elements = true
   config.match = :prefer_exact
   config.visible_text_only = true
