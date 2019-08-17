@@ -145,7 +145,7 @@ feature 'Add event to waiting list' do
       wait_tickets_after_allocation = kim_event_dashboard_page.ticket_allocation_section.waiting_tickets_count.text
 
       expect(wait_tickets_after_graph.to_i).to eq @wait_tickets_before_graph.to_i + 1
-      expect(wait_fans_after_graph.to_i).to eq @wait_fans_before_graph.to_i + 1
+      expect(wait_fans_after_graph).to eq @wait_fans_before_graph
       expect(wait_tickets_after_allocation.to_i).to eq @wait_tickets_before_allocation.to_i + 1
     end
 
@@ -154,6 +154,6 @@ feature 'Add event to waiting list' do
     wait_fans_after_buying = pam_event_page.waiting_fans_count.text
 
     expect(wait_tickets_after_buying.to_i).to eq wait_tickets_before_buying.to_i + 1
-    expect(wait_fans_after_buying.to_i).to eq wait_fans_before_buying.to_i + 1
+    expect(wait_fans_after_buying).to eq wait_fans_before_buying
   end
 end
