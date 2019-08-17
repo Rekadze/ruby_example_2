@@ -108,7 +108,7 @@ feature 'Add event to waiting list' do
 
     web_app = open_new_window
 
-    within_new_window web_app do
+    within_window web_app do
       app_event_page.load(event_code: web_event_for_waiting)
       app_event_page.wait_until_book_now_button_visible
       expect(app_event_page.book_now_button.text).to eq 'JOIN THE WAITING LIST'
